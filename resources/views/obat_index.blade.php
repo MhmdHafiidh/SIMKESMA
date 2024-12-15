@@ -13,8 +13,6 @@
                             <th>Nama Obat</th>
                             <th>Satuan</th>
                             <th>Qty</th>
-                            <th>Harga Beli</th>
-                            <th>Harga Jual</th>
                             <th>Tanggal Expired</th>
                             <th>Aksi</th>
                         </tr>
@@ -34,8 +32,6 @@
                                     @endif
                                     </span>
                                 </td>
-                                <td>{{ $item->harga_beli }}</td>
-                                <td>{{ $item->harga_jual }}</td>
                                 <td>{{ $item->tanggal_expired ? \Carbon\Carbon::parse($item->tanggal_expired)->format('d-m-Y') : '' }}
                                 </td>
                                 <td>
