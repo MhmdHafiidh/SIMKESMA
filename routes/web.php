@@ -25,17 +25,11 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', [RegistrasiPasienController::class, 'create']);
 Route::resource('registrasipasien', RegistrasiPasienController::class);
 
-Route::get('/login/mahasiswa', [LoginController::class, 'showMahasiswaLogin'])->name('login.mahasiswa');
 Route::post('/login/mahasiswa', [LoginController::class, 'mahasiswaLogin'])->name('login.mahasiswa.submit');
-Route::get('/dashboard/mahasiswa', function () {
-    return view('layouts.mahasiswa');  // This refers to resources/views/layouts/mahasiswa.blade.php
-})->name('mahasiswa.dashboard')->middleware('auth');
+Route::get('/dashboard/mahasiswa', [LoginController::class, 'dashboardMahasiswa'])->name('mahasiswa.dashboard')->middleware('auth');
 
-Route::get('/login/dokter', [LoginController::class, 'showDokterLogin'])->name('login.dokter');
 Route::post('/login/dokter', [LoginController::class, 'dokterLogin'])->name('login.dokter.submit');
-Route::get('/dashboard/dokter', function () {
-    return view('layouts.dokter');  // This refers to resources/views/layouts/mahasiswa.blade.php
-})->name('dokter.dashboard')->middleware('auth');
+Route::get('/dashboard/dokter', [LoginController::class, 'dashboardDokter'])->name('dokter.dashboard')->middleware('auth');
 
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

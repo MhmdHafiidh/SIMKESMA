@@ -27,16 +27,8 @@
     <link href="/medilab/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="/medilab/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="/medilab/assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: May 30 2023 with Bootstrap v5.3.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="/medilab/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,7 +37,7 @@
     <div id="topbar" class="d-flex align-items-center fixed-top">
         <div class="container d-flex justify-content-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">humas@polinema.ac.id</a>
+                <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">simkesma@polinema.ac.id</a>
                 <i class="bi bi-telephone"></i> (0341) 404424
             </div>
         </div>
@@ -55,16 +47,19 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index.html">SIMKESMA</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="/medilab/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <!-- Mengganti tulisan "SIMKESMA" dengan logo -->
+            <a href="index.html" class="logo me-auto">
+                <img src="/medilab/assets/img/logo_simkesma.png" alt="SIMKESMA Logo" class="logo-img">
+            </a>
+
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
                     <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
                     <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
-                    <li><a class="nav-link scrollto" href="/login"><i class="bi bi-person-circle me-1"></i> Login</a>
+                    <li><a class="nav-link scrollto" href="/login">
+                            <i class="bi bi-person-circle me-1"></i> Login</a>
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -72,6 +67,7 @@
 
         </div>
     </header><!-- End Header -->
+
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
@@ -139,62 +135,6 @@
             </div>
         </section><!-- End Why Us Section -->
 
-        <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts">
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="count-box">
-                            <i class="fas fa-user-md"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Doctors</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-                        <div class="count-box">
-                            <i class="far fa-hospital"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Departments</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                        <div class="count-box">
-                            <i class="fas fa-flask"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Research Labs</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-                        <div class="count-box">
-                            <i class="fas fa-award"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Awards</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Counts Section -->
-        <!-- ======= Doctors Section ======= -->
-        <!-- ======= Appointment Section ======= -->
-        <section id="appointment" class="appointment section-bg">
-            <div class="container">
-            </div>
-        </section><!-- End Appointment Section -->
-
-
-
-        <!-- ======= Frequently Asked Questions Section ======= -->
         <section id="faq" class="faq section-bg">
             <div class="container">
 
@@ -291,149 +231,6 @@
             </div>
         </section><!-- End Frequently Asked Questions Section -->
 
-
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="/medilab/assets/img/testimonials/testimonials-2.jpg"
-                                        class="testimonial-img" alt="">
-                                    <h3>Sara Wilsson</h3>
-                                    <h4>Designer</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum
-                                        quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat
-                                        irure amet legam anim culpa.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="/medilab/assets/img/testimonials/testimonials-3.jpg"
-                                        class="testimonial-img" alt="">
-                                    <h3>Jena Karlis</h3>
-                                    <h4>Store Owner</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                        veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis
-                                        sint minim.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-            </div>
-        </section><!-- End Testimonials Section -->
-
-        <!-- ======= Gallery Section ======= -->
-        <section id="gallery" class="gallery">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Galeri</h2>
-                    <p>Temukan momen dan dokumentasi terbaik kami di galeri ini. Dari kegiatan hingga pencapaian, semua
-                        terabadikan dengan indah untuk menunjukkan perjalanan dan dedikasi kami dalam mendukung layanan
-                        kesehatan terbaik.</p>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row g-0">
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-1.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-2.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-3.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-4.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-5.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-6.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-7.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="/medilab/assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                                <img src="/medilab/assets/img/gallery/gallery-8.jpg" alt=""
-                                    class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Gallery Section -->
-
-        <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
             <div class="container">
 

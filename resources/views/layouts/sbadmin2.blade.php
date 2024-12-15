@@ -43,16 +43,6 @@
                 </a>
             </li>
 
-            <!-- Nav Item - User Management (Admin only) -->
-            @if (auth()->user()->role == 'admin')
-                <li class="nav-item {{ Route::is('user.*') ? 'active' : '' }}">
-                    <a class="nav-link" href="/user">
-                        <i class="fas fa-users"></i>
-                        <span class="d-none d-md-inline">User Data</span>
-                    </a>
-                </li>
-            @endif
-
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Route::is('profil.*') ? 'active' : '' }}">
                 <a class="nav-link" href="/profil/create">
@@ -73,7 +63,6 @@
                     </a>
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Data Obat:</h6>
                             <a class="collapse-item" href="/obat/create">Tambah Obat</a>
                             <a class="collapse-item" href="/obat">Data Obat</a>
                         </div>
@@ -156,26 +145,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('sbadmin2') }}/vendor/jquery/jquery.min.js"></script>

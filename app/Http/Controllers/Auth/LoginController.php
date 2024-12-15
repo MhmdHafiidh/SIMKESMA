@@ -45,20 +45,6 @@ class LoginController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function showMahasiswaLogin()
-    {
-        return view('auth.login_mahasiswa');
-    }
-
-    /**
-     * Show the dokter login form.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showDokterLogin()
-    {
-        return view('auth.login_dokter');
-    }
 
     /**
      * Handle mahasiswa login request.
@@ -83,6 +69,16 @@ class LoginController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    public function dashboardMahasiswa()
+{
+    // Pastikan hanya mahasiswa yang bisa mengakses
+    if (Auth::check() && Auth::user()->role == 'mahasiswa') {
+        return view('layouts.dashboard_mahasiswa');
+    }
+    
+    return redirect()->route('login')->with('error', 'Akses ditolak');
+}
 
     /**
      * Handle dokter login request.
