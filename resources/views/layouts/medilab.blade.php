@@ -56,9 +56,9 @@
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
-                    <li><a class="nav-link scrollto" href="/login">
+                    <li><a class="nav-link scrollto" href="#faq">Tips</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Tentang</a></li>
+                    <li><a class="nav-link scrollto" href="/login"> 
                             <i class="bi bi-person-circle me-1"></i> Login</a>
                     </li>
                 </ul>
@@ -88,12 +88,10 @@
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-stretch">
                         <div class="content">
-                            <h3>Why Choose Medilab?</h3>
+                            <h3>What is SIMKESMA?</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                                optio ad corporis.
+                                Sistem Informasi Kesehatan Mahasiswa POLINEMA merupakan sistem yang dibuat untuk mempermudah pengelolaan data kesehatan mahasiswa polinema, 
+                                meningkatkan efisiensi dalam pelayanan kesehatan, serta memberikan akses informasi yang cepat dan akurat kepada mahasiswa. 
                             </p>
                             <div class="text-center">
                                 <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
