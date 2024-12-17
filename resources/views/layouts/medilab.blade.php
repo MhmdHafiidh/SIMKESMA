@@ -103,9 +103,8 @@
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
                                         <i class="bx bx-receipt"></i>
-                                        <h4>Corporis voluptates sit</h4>
-                                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                            aliquip</p>
+                                        <h4>Rekam Medis</h4>
+                                        <p>Rekam medis mahasiswa adalah catatan penting yang memuat informasi kesehatan, riwayat penyakit, hasil pemeriksaan mahasiswa.</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
