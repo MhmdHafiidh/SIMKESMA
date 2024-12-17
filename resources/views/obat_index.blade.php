@@ -2,9 +2,8 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">{{ $judul }}</div>
+        <div class="card-header">Data Obat</div>
         <div class="card-body">
-            <a href="/obat/create" class="btn btn-primary mb-2">Tambah Obat</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -13,8 +12,6 @@
                             <th>Nama Obat</th>
                             <th>Satuan</th>
                             <th>Qty</th>
-                            <th>Harga Beli</th>
-                            <th>Harga Jual</th>
                             <th>Tanggal Expired</th>
                             <th>Aksi</th>
                         </tr>
@@ -34,8 +31,6 @@
                                     @endif
                                     </span>
                                 </td>
-                                <td>{{ $item->harga_beli }}</td>
-                                <td>{{ $item->harga_jual }}</td>
                                 <td>{{ $item->tanggal_expired ? \Carbon\Carbon::parse($item->tanggal_expired)->format('d-m-Y') : '' }}
                                 </td>
                                 <td>

@@ -1,77 +1,150 @@
 @extends('layouts.app')
 
+@section('title', 'Registrasi Mahasiswa')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1600x900/?education,university') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+        }
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+        .card-header {
+            background: #2980b9;
+            /* Warna biru seperti login */
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        .btn-primary {
+            background-color: #2980b9;
+            /* Warna tombol sesuai login */
+            border: none;
+            transition: transform 0.2s ease;
+        }
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: scale(1.03);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 120px;
+            max-height: 50px;
+            margin: 0 15px;
+        }
+    </style>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Registrasi Mahasiswa
+                    </div>
+
+                    <div class="card-body p-4">
+                        {{-- Logo --}}
+                        <div class="logo-container">
+                            <img src="{{ asset('medilab/assets/img/logo_simkesma.png') }}" alt="Logo 1">
+                            <img src="{{ asset('medilab/assets/img/logoo.png') }}" alt="Logo 2">
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                        {{-- Alert Messages --}}
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        {{-- Form Start --}}
+                        <form method="POST" action="{{ route('mahasiswa.store') }}">
+                            @csrf
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- Nama Lengkap --}}
+                            <div class="form-group mb-4">
+                                <label>Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nama_lengkap"
+                                    value="{{ old('nama_lengkap') }}" required>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- NIM --}}
+                            <div class="form-group mb-4">
+                                <label>NIM</label>
+                                <input type="text" class="form-control" name="nim" value="{{ old('nim') }}"
+                                    required>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            {{-- Email --}}
+                            <div class="form-group mb-4">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                    required>
                             </div>
-                        </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                            {{-- Password --}}
+                            <div class="form-group mb-4">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+
+                            {{-- Konfirmasi Password --}}
+                            <div class="form-group mb-4">
+                                <label>Konfirmasi Password</label>
+                                <input type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+
+                            {{-- Program Studi --}}
+                            <div class="form-group mb-4">
+                                <label>Program Studi</label>
+                                <select name="prodi" class="form-control" required>
+                                    <option value="">Pilih Program Studi</option>
+                                    @foreach ($prodi as $p)
+                                        <option value="{{ $p }}" {{ old('prodi') == $p ? 'selected' : '' }}>
+                                            {{ $p }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- Angkatan --}}
+                            <div class="form-group mb-4">
+                                <label>Angkatan</label>
+                                <select name="angkatan" class="form-control" required>
+                                    <option value="">Pilih Angkatan</option>
+                                    @foreach ($angkatan as $tahun)
+                                        <option value="{{ $tahun }}"
+                                            {{ old('angkatan') == $tahun ? 'selected' : '' }}>{{ $tahun }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- Submit Button --}}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary w-50 py-2">
+                                    Daftar
                                 </button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

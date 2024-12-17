@@ -209,7 +209,7 @@
                     <div class="text-center mt-3">
                         <p class="mb-0">
                             Belum punya akun?
-                            <a href="" class="text-primary">Daftar Sekarang</a>
+                            <a href="{{ route('register') }}" class="text-primary">Daftar Sekarang</a>
                         </p>
                     </div>
                     <div>

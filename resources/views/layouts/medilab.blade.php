@@ -57,9 +57,10 @@
                     <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
                     <li><a class="nav-link scrollto" href="#faq">Tips</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Tentang</a></li>
-                    <li><a class="nav-link scrollto" href="/login">
-                            <i class="bi bi-person-circle me-1"></i> Login</a>
-                    </li>
+                     <li><a class="nav-link scrollto" href="/login">
+                            <li><a class="nav-link scrollto" href="/login">
+                                    <i class="bi bi-person-circle me-1"></i> Login</a>
+                            </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -87,14 +88,23 @@
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-stretch">
                         <div class="content">
-                            <h3>Apa Itu SIMKESMA?</h3>
-                            <p>
-                                Sistem Informasi Kesehatan Mahasiswa POLINEMA merupakan sistem yang dibuat untuk mempermudah pengelolaan data kesehatan mahasiswa polinema,
-                                meningkatkan efisiensi dalam pelayanan kesehatan, serta memberikan akses informasi yang cepat dan akurat kepada mahasiswa.
-                            </p>
-                            <div class="text-center">
-                                <a href="#" class="more-btn">Pelajari Lebih Lanjut<i class="bx bx-chevron-right"></i></a>
-                            </div>
+                          <h3>Apa Itu SIMKESMA?</h3>
+                                <p>
+                                    Sistem Informasi Kesehatan Mahasiswa POLINEMA merupakan sistem yang dibuat untuk
+                                    mempermudah pengelolaan data kesehatan mahasiswa polinema,
+                                    meningkatkan efisiensi dalam pelayanan kesehatan, serta memberikan akses informasi
+                                    yang cepat dan akurat kepada mahasiswa.
+                                <h3>What is SIMKESMA?</h3>
+                                <p>
+                                    Sistem Informasi Kesehatan Mahasiswa POLINEMA merupakan sistem yang dibuat untuk
+                                    mempermudah pengelolaan data kesehatan mahasiswa polinema,
+                                    meningkatkan efisiensi dalam pelayanan kesehatan, serta memberikan akses informasi
+                                    yang cepat dan akurat kepada mahasiswa.
+                                </p>
+                                <div class="text-center">
+                                    <a href="#" class="more-btn">Pelajari Lebih Lanjut<i
+                                            class="bx bx-chevron-right"></i></a>
+                                </div>
                         </div>
                     </div>
                     <div class="col-lg-8 d-flex align-items-stretch">
@@ -104,7 +114,8 @@
                                     <div class="icon-box mt-4 mt-xl-0">
                                         <i class="bx bx-receipt"></i>
                                         <h4>Rekam Medis</h4>
-                                        <p>Rekam medis mahasiswa adalah catatan penting yang memuat informasi kesehatan, riwayat penyakit, hasil pemeriksaan mahasiswa.</p>
+                                        <p>Rekam medis mahasiswa adalah catatan penting yang memuat informasi kesehatan,
+                                            riwayat penyakit, hasil pemeriksaan mahasiswa.</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
@@ -112,14 +123,18 @@
                                         <i class="bx bx-cube-alt"></i>
                                         <h4>Konsultasi Online</h4>
                                         <p>
-                                            Konsultasi online adalah layanan bagi mahasiswa untuk berkonsultasi dengan tenaga kesehatan secara jarak jauh melalui platform digital.</p>
+                                            Konsultasi online adalah layanan bagi mahasiswa untuk berkonsultasi dengan
+                                            tenaga kesehatan secara jarak jauh melalui platform digital.</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
                                         <i class="bx bx-images"></i>
                                         <h4>Informasi Kesehatan</h4>
-                                        <p>Informasi kesehatan adalah tulisan informatif yang membahas topik-topik terkait kesehatan, seperti tips hidup sehat, pencegahan penyakit, dan penanganan masalah kesehatan, untuk meningkatkan pemahaman dan kesadaran pembacanya.</p>
+                                        <p>Informasi kesehatan adalah tulisan informatif yang membahas topik-topik
+                                            terkait kesehatan, seperti tips hidup sehat, pencegahan penyakit, dan
+                                            penanganan masalah kesehatan, untuk meningkatkan pemahaman dan kesadaran
+                                            pembacanya.</p>
                                     </div>
                                 </div>
                             </div>

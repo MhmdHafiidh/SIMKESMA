@@ -11,11 +11,14 @@ return array(
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
-    'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+<<<<<<< HEAD
+=======
+    'App\\Http\\Controllers\\MahasiswaController' => $baseDir . '/app/Http/Controllers/MahasiswaController.php',
+>>>>>>> e61c264eeb58b254cf239cdca59e3df9a5189575
     'App\\Http\\Controllers\\ObatController' => $baseDir . '/app/Http/Controllers/ObatController.php',
     'App\\Http\\Controllers\\ProfilController' => $baseDir . '/app/Http/Controllers/ProfilController.php',
     'App\\Http\\Controllers\\RegistrasiPasienController' => $baseDir . '/app/Http/Controllers/RegistrasiPasienController.php',
@@ -33,6 +36,11 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
+=======
+    'App\\Http\\Requests\\Store\\StoreMahasiswaRequests' => $baseDir . '/app/Http/Requests/Store/StoreMahasiswaRequests.php',
+    'App\\Models\\Mahasiswa' => $baseDir . '/app/Models/Mahasiswa.php',
+>>>>>>> e61c264eeb58b254cf239cdca59e3df9a5189575
     'App\\Models\\Obat' => $baseDir . '/app/Models/Obat.php',
     'App\\Models\\Pasien' => $baseDir . '/app/Models/Pasien.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
