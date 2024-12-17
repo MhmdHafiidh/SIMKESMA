@@ -2,9 +2,8 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">{{ $judul }}</div>
+        <div class="card-header">Data Obat</div>
         <div class="card-body">
-            <a href="/obat/create" class="btn btn-primary mb-2">Tambah Obat</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

@@ -27,10 +27,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <div class="sidebar-brand-icon">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-1">{{ env('APP_NAME') }}</div>
+                <div class="sidebar-brand-text mx-1">SIMKESMA</div>
             </a>
 
             <hr class="sidebar-divider my-0">
@@ -52,7 +49,7 @@
             </li>
 
             <!-- Collapsible Sections for Admin -->
-            @if (auth()->user()->role == 'admin')
+            @if (auth()->user()->role == 'dokter')
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">Data Master</div>
                 <li class="nav-item">
@@ -64,6 +61,23 @@
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/obat/create">Tambah Obat</a>
+                            <a class="collapse-item" href="/obat">Data Obat</a>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
+            @if (auth()->user()->role == 'admin')
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">Data Master</div>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                        data-target="#collapseDataKlinik" aria-expanded="true" aria-controls="collapseDataKlinik">
+                        <i class="fas fa-clinic-medical"></i>
+                        <span class="d-none d-md-inline">Data Klinik</span>
+                    </a>
+                    <div id="collapseDataKlinik" class="collapse">
+                        <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/obat">Data Obat</a>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RegistrasiPasienController;
 use App\Http\Controllers\UserController;
@@ -38,6 +39,9 @@ Route::middleware(Authenticate::class)->group(function () {
     //buat middleware dengan perintah php artisan make:middleware Admin lalu modif kodenya \App\Http\Middleware\Admin.php
     Route::resource('obat', ObatController::class)->middleware(Admin::class);
 });
+
+Route::get('/register', [MahasiswaController::class, 'create'])->name('register');
+Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
 
 //membuat route logout
 Route::get('logout', function () {
