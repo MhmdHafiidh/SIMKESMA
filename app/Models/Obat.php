@@ -15,14 +15,7 @@ class Obat extends Model
         'deskripsi',
         'satuan',
         'tipe',
-        'harga_beli',
-        'harga_jual',
         'qty',
         'tanggal_expired',
     ];
-
-    public function dokter()
-    {
-        return $this->belongsTo(Dokter::class, 'dokter_id');
-    }
 }
