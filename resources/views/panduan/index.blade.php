@@ -4,6 +4,13 @@
     <div class="container">
         <h1 class="mb-4">Daftar Panduan Kesehatan</h1>
 
+        <!-- Tombol Tambah Panduan (Hanya untuk Dokter) -->
+        @if (auth()->user()->role == 'dokter')
+            <div class="mb-4">
+                <a href="{{ route('dokter.panduan.create') }}" class="btn btn-primary">Tambah Panduan</a>
+            </div>
+        @endif
+
         <!-- Form Pencarian -->
         <form method="GET" action="{{ route('dokter.panduan.index') }}" class="mb-4">
             <div class="input-group">
@@ -26,7 +33,7 @@
 
                         <!-- Link untuk membuka/menutup konten lengkap -->
                         <a href="javascript:void(0)"
-                           class="text-info"
+                           style="color: #4169E1; text-decoration: none;"
                            data-bs-toggle="collapse"
                            data-bs-target="#collapsePanduan{{ $panduan->id }}"
                            aria-expanded="false"
@@ -67,17 +74,15 @@
     <!-- JavaScript -->
     <script>
         function toggleContent(id) {
-            // Ambil elemen konten singkat dan teks toggle
             const shortContent = document.getElementById('shortContent' + id);
             const toggleText = document.getElementById('toggleText' + id);
 
-            // Toggle visibilitas elemen dan ubah teks tautan
             if (shortContent) {
                 if (shortContent.style.display === 'none') {
-                    shortContent.style.display = 'block'; // Tampilkan kembali
+                    shortContent.style.display = 'block';
                     toggleText.textContent = 'Lihat Selengkapnya';
                 } else {
-                    shortContent.style.display = 'none'; // Sembunyikan
+                    shortContent.style.display = 'none';
                     toggleText.textContent = 'Tutup';
                 }
             }
