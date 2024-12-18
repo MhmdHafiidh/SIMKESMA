@@ -45,9 +45,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /**
-     * Get the dokter associated with the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
+    public function mahasiswa()
+{
+    return $this->hasOne(Mahasiswa::class, 'user_id');
+}
+
 }

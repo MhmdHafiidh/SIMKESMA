@@ -48,7 +48,6 @@
                 </a>
             </li>
 
-            <!-- Collapsible Sections for Admin -->
             @if (auth()->user()->role == 'dokter')
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">Data Master</div>
@@ -69,7 +68,6 @@
 
             @if (auth()->user()->role == 'admin')
                 <hr class="sidebar-divider">
-                <div class="sidebar-heading">Data Master</div>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse"
                         data-target="#collapseDataKlinik" aria-expanded="true" aria-controls="collapseDataKlinik">
@@ -79,6 +77,7 @@
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/obat">Data Obat</a>
+                            <a class="collapse-item" href="/mahasiswa">Data Mahasiswa</a>
                         </div>
                     </div>
                 </li>
