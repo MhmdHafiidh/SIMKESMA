@@ -3,124 +3,124 @@
 @section('title', 'Registrasi Mahasiswa')
 
 @section('content')
-    <div class="container">
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1600x900/?education,university') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background: #2980b9;
+            /* Warna biru seperti login */
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .btn-primary {
+            background-color: #2980b9;
+            /* Warna tombol sesuai login */
+            border: none;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: scale(1.03);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 120px;
+            max-height: 50px;
+            margin: 0 15px;
+        }
+    </style>
+
+    <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Registrasi Mahasiswa</div>
+                    <div class="card-header">
+                        Registrasi Mahasiswa
+                    </div>
 
-                    <div class="card-body">
+                    <div class="card-body p-4">
+                        {{-- Logo --}}
+                        <div class="logo-container">
+                            <img src="{{ asset('medilab/assets/img/logo_simkesma.png') }}" alt="Logo 1">
+                            <img src="{{ asset('medilab/assets/img/logoo.png') }}" alt="Logo 2">
+                        </div>
+
+                        {{-- Alert Messages --}}
                         @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
+                            <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
-
                         @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
+                            <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
 
+                        {{-- Form Start --}}
                         <form method="POST" action="{{ route('mahasiswa.store') }}">
                             @csrf
 
-                            <div class="form-group mb-3">
-                                <label>Nama Lengkap*</label>
-                                <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                    name="nama_lengkap" value="{{ old('nama_lengkap') }}" required>
-                                @error('nama_lengkap')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- Nama Lengkap --}}
+                            <div class="form-group mb-4">
+                                <label>Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nama_lengkap"
+                                    value="{{ old('nama_lengkap') }}" required>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label>NIM*</label>
-                                <input type="text" class="form-control @error('nim') is-invalid @enderror" name="nim"
-                                    value="{{ old('nim') }}" required>
-                                @error('nim')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- NIM --}}
+                            <div class="form-group mb-4">
+                                <label>NIM</label>
+                                <input type="text" class="form-control" name="nim" value="{{ old('nim') }}"
+                                    required>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label>Email*</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- Email --}}
+                            <div class="form-group mb-4">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                    required>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label>Password*</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" value="{{ old('password') }}" required>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- Password --}}
+                            <div class="form-group mb-4">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" required>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label>Konfirmasi Password*</label>
-                                <input type="password"
-                                    class="form-control @error('password_confirmation') is-invalid @enderror"
-                                    name="password_confirmation" value="{{ old('password_confirmation') }}" required>
-                                @error('password_confirmation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            {{-- Konfirmasi Password --}}
+                            <div class="form-group mb-4">
+                                <label>Konfirmasi Password</label>
+                                <input type="password" class="form-control" name="password_confirmation" required>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6 form-group mb-3">
-                                    <label>Tempat Lahir</label>
-                                    <input type="text" class="form-control" name="tempat_lahir"
-                                        value="{{ old('tempat_lahir') }}">
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label>Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tanggal_lahir"
-                                        value="{{ old('tanggal_lahir') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Jenis Kelamin</label>
-                                <select name="jenis_kelamin" class="form-control">
-                                    <option value="">Pilih Jenis Kelamin</option>
-                                    <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki
-                                    </option>
-                                    <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Program Studi*</label>
-                                <select name="prodi" class="form-control @error('prodi') is-invalid @enderror" required>
+                            {{-- Program Studi --}}
+                            <div class="form-group mb-4">
+                                <label>Program Studi</label>
+                                <select name="prodi" class="form-control" required>
                                     <option value="">Pilih Program Studi</option>
                                     @foreach ($prodi as $p)
                                         <option value="{{ $p }}" {{ old('prodi') == $p ? 'selected' : '' }}>
-                                            {{ $p }}
-                                        </option>
+                                            {{ $p }}</option>
                                     @endforeach
                                 </select>
-                                @error('prodi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <div class="form-group mb-3">
@@ -130,9 +130,7 @@
                                     <option value="">Pilih Angkatan</option>
                                     @foreach ($angkatan as $tahun)
                                         <option value="{{ $tahun }}"
-                                            {{ old('angkatan') == $tahun ? 'selected' : '' }}>
-                                            {{ $tahun }}
-                                        </option>
+                                            {{ old('angkatan') == $tahun ? 'selected' : '' }}>{{ $tahun }}</option>
                                     @endforeach
                                     <option value="manual" {{ old('angkatan') == 'manual' ? 'selected' : '' }}>Lainnya
                                     </option>
