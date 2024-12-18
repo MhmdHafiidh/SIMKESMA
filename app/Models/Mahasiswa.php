@@ -25,5 +25,11 @@ class Mahasiswa extends Model
     {
         $this->attributes['password'] = Hash::make($value); // Enkripsi password sebelum disimpan
     }
+
+    public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
 }
 
