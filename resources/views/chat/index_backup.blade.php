@@ -7,22 +7,17 @@
             <div class="card shadow-sm mb-4">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                     <h6 class="m-0">Chats</h6>
-                    <div>
-                        {{-- <span id="total-unread-badge" class="badge badge-light ml-2">0</span> --}}
-                        <i class="fas fa-comment-dots"></i>
-                    </div>
+                    <i class="fas fa-comment-dots"></i>
                 </div>
                 <div class="list-group list-group-flush" id="users-list">
                     @foreach ($users as $user)
                         <a href="#" class="list-group-item list-group-item-action user-item py-3"
                            data-user-id="{{ $user->id }}"
-                           data-user-name="{{ $user->name }}"
                            onclick="selectUser({{ $user->id }}, '{{ $user->name }}')">
                             <div class="d-flex w-100 justify-content-between">
                                 <h6 class="mb-1">{{ $user->name }}</h6>
-                                <small class="text-muted d-flex align-items-center">
+                                <small class="text-muted">
                                     <i class="fas fa-circle text-success mr-1" style="font-size: 0.5rem;"></i>
-                                    <span class="unread-badge badge badge-danger ml-1" data-user-id="{{ $user->id }}" style="display:none;">0</span>
                                 </small>
                             </div>
                         </a>
@@ -35,9 +30,6 @@
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" id="chat-header">
                     <span>Select a user to start chatting</span>
                     <div class="header-actions">
-                        <button class="btn btn-sm btn-light mr-2" id="refresh-chat" style="display:none;" onclick="refreshChat()">
-                            <i class="fas fa-sync"></i>
-                        </button>
                         <button class="btn btn-sm btn-light" id="clear-chat" style="display:none;" onclick="clearChat()">
                             <i class="fas fa-trash-alt"></i>
                         </button>
@@ -52,12 +44,11 @@
                 </div>
                 <div class="card-footer">
                     <form id="chat-form" enctype="multipart/form-data">
-                        @csrf
                         <input type="hidden" id="receiver_id" name="receiver_id">
                         <div class="input-group">
                             <textarea class="form-control" id="message" name="message" placeholder="Write a message..." rows="1" disabled></textarea>
                             <div class="input-group-append">
-                                <label class="btn btn-outline-secondary mr-2" disabled>
+                                <label class="btn btn-outline-secondary" disabled>
                                     <input type="file" id="image" name="image" accept="image/*" style="display: none;" disabled>
                                     <i class="fa fa-image"></i>
                                 </label>
@@ -68,17 +59,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Image Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content bg-transparent border-0">
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" class="img-fluid" style="max-height: 80vh;">
             </div>
         </div>
     </div>
@@ -148,54 +128,15 @@
 <script>
     let selectedUser = null;
     const currentUserId = {{ auth()->id() }};
-    let messageTimestamps = {};
-    let userUnreadCounts = {};
+    let messageTimestamps = {}; // Track last message timestamp for each user
 
     // Request notification permission
     if ('Notification' in window) {
         Notification.requestPermission();
     }
 
-    function checkUnreadMessages() {
-        fetch('/chat/check-unread')
-            .then(response => response.json())
-            .then(data => {
-                // Update total unread badge
-                const totalUnreadBadge = document.getElementById('total-unread-badge');
-                totalUnreadBadge.textContent = data.unread_messages;
-                totalUnreadBadge.style.display = data.unread_messages > 0 ? 'inline-block' : 'none';
-
-                // Update individual user unread badges
-                data.user_unread_counts.forEach(userCount => {
-                    updateUserUnreadBadge(userCount.user_id, userCount.unread_count);
-                });
-
-                // Browser notification
-                if (data.unread_messages > 0 &&
-                    'Notification' in window &&
-                    Notification.permission === 'granted') {
-                    new Notification('New Messages', {
-                        body: `You have ${data.unread_messages} unread messages`,
-                        // icon: '/path/to/notification-icon.png'
-                        icon: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/solid/bell.svg'
-
-                    });
-                }
-            })
-            .catch(error => console.error('Error checking unread messages:', error));
-    }
-
-    function updateUserUnreadBadge(userId, count) {
-        const badge = document.querySelector(`.unread-badge[data-user-id="${userId}"]`);
-        if (badge) {
-            badge.textContent = count;
-            badge.style.display = count > 0 ? 'inline-block' : 'none';
-        }
-        userUnreadCounts[userId] = count;
-    }
-
     function selectUser(id, name) {
-        // Reset UI
+        // Reset UI sebelum memuat pesan baru
         const chatBox = document.getElementById('chat-box');
         chatBox.innerHTML = `
             <div class="text-center text-muted mt-5">
@@ -204,55 +145,31 @@
             </div>
         `;
 
-        // Reset buttons and inputs
+        // Reset tombol kirim dan teks area
         const messageInput = document.getElementById('message');
         const imageInput = document.getElementById('image');
         const sendButton = document.querySelector('button[onclick="sendMessage()"]');
-        const refreshButton = document.getElementById('refresh-chat');
-        const clearButton = document.getElementById('clear-chat');
 
         messageInput.disabled = true;
         imageInput.disabled = true;
         sendButton.disabled = true;
-        refreshButton.style.display = 'inline-block';
-        clearButton.style.display = 'inline-block';
 
-        // Set user details
+        // Atur user ID dan nama
         selectedUser = id;
         document.getElementById('receiver_id').value = id;
         document.getElementById('chat-header').querySelector('span').textContent = `Chatting with ${name}`;
 
-        // Update active user
+        // Perbarui tampilan user aktif
         document.querySelectorAll('.user-item').forEach(item => item.classList.remove('active'));
         document.querySelector(`.user-item[data-user-id="${id}"]`).classList.add('active');
 
-        // Fetch messages and mark as read
+        // Fetch messages
         fetchMessages(id).then(() => {
-            // Enable inputs
+            // Aktifkan input setelah pesan dimuat
             messageInput.disabled = false;
             imageInput.disabled = false;
             sendButton.disabled = false;
-
-            // Mark messages as read
-            markMessagesAsRead(id);
         });
-    }
-
-    function markMessagesAsRead(senderId) {
-        fetch('/chat/mark-as-read', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({ sender_id: senderId })
-        });
-    }
-
-    function refreshChat() {
-        if (selectedUser) {
-            fetchMessages(selectedUser);
-        }
     }
 
     async function fetchMessages(id) {
@@ -354,15 +271,9 @@
         document.getElementById('clear-chat').style.display = 'none';
     }
 
-    // function openImageModal(imageSrc) {
-    //     // You can implement a modal or lightbox here in future
-    //     window.open(imageSrc, '_blank');
-    // }
-
     function openImageModal(imageSrc) {
-        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
-        document.getElementById('modalImage').src = imageSrc;
-        modal.show();
+        // You can implement a modal or lightbox here in future
+        window.open(imageSrc, '_blank');
     }
 
     function checkNewMessages() {
@@ -385,9 +296,7 @@
                         if ('Notification' in window && Notification.permission === 'granted') {
                             new Notification(`New message from ${msg.sender_name}`, {
                                 body: msg.message || 'Sent an image',
-                                // icon: '/path/to/default/avatar.png'
-                                icon: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/solid/user.svg'
-
+                                icon: '/path/to/default/avatar.png'
                             });
                         }
                     });
@@ -405,8 +314,5 @@
 
     // Check for new messages every 10 seconds
     setInterval(checkNewMessages, 10000);
-    document.addEventListener('DOMContentLoaded', () => {
-        checkUnreadMessages();
-    });
 </script>
 @endsection

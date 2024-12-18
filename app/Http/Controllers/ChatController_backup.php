@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ChatController extends Controller
 {
@@ -53,23 +53,11 @@ class ChatController extends Controller
     public function checkUnreadMessages()
     {
         $userId = auth()->id();
-
-        // Total unread messages count
-        $totalUnreadMessages = Chat::where('receiver_id', $userId)
-            ->whereNull('read_at')
+        $unreadMessages = Chat::where('receiver_id', $userId)
+            ->where('read_at', null) // Field `read_at` null berarti pesan belum terbaca
             ->count();
 
-        // Unread messages per user
-        $userUnreadCounts = Chat::where('receiver_id', $userId)
-            ->whereNull('read_at')
-            ->select('sender_id', DB::raw('COUNT(*) as unread_count'))
-            ->groupBy('sender_id')
-            ->get();
-
-        return response()->json([
-            'unread_messages' => $totalUnreadMessages,
-            'user_unread_counts' => $userUnreadCounts
-        ]);
+        return response()->json(['unread_messages' => $unreadMessages]);
     }
 
     public function markAsRead(Request $request)

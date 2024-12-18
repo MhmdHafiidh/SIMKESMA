@@ -41,10 +41,14 @@ Route::middleware(Authenticate::class)->group(function () {
     // Resource lainnya tetap menggunakan middleware yang ada
     Route::resource('user', UserController::class)->middleware(Admin::class);
     Route::resource('profil', ProfilController::class);
-    
+
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/messages/{id}', [ChatController::class, 'fetchMessages']);
     Route::post('/chat/send', [ChatController::class, 'sendMessage']);
+    Route::post('/chat/mark-as-read', [ChatController::class, 'markAsRead']);
+    Route::get('/chat/check-unread', [ChatController::class, 'checkUnreadMessages']);
+
+
 });
 
 Route::get('/register', [MahasiswaController::class, 'create'])->name('register');
