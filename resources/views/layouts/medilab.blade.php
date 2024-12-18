@@ -309,7 +309,7 @@
                                 <div class="error-message"></div>
                                 <div class="sent-message">Pesanmu Telah Terkirim. Terima Kasih!</div>
                             </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
+                            <div class="text-center"><button type="submit">Kirim Pesan /  Saran</button></div>
                         </form>
 
                     </div>

@@ -1,30 +1,61 @@
 @extends('layouts.sbadmin2')
 
 @section('content')
-    <div class="card">
-        <div class="card-header">PROFIL SAYA - {{ strtoupper(auth()->user()->name) }}</div>
+    <div class="card shadow mb-4">
+        <div class="card-header text-white" style="background: linear-gradient(135deg, #2980b9, #21618c);">
+            <h5 class="m-0">PROFIL SAYA - {{ strtoupper(auth()->user()->name) }}</h5>
+        </div>
         <div class="card-body">
             <form action="/profil" method="POST" enctype="multipart/form-data">
                 @method('POST')
                 @csrf
-                <div class="form-group mt-1">
-                    <label for="name">Nama</label>
-                    <input class="form-control" type="text" name="name" value="{{ $user->name }}" autofocus>
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="username">Username</label>
-                    <input class="form-control" type="text" name="username" value="{{ $user->email }}">
-                    <span class="text-danger">{{ $errors->first('username') }}</span>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="password">Password</label>
-                    <input class="form-control" type="text" name="password" value="{{ old('password') }}">
-                    <span class="text-danger">{{ $errors->first('password') }}</span>
+
+                <!-- Nama -->
+                <div class="form-group">
+                    <label for="name" class="font-weight-bold">Nama</label>
+                    <input class="form-control @error('name') is-invalid @enderror"
+                           type="text"
+                           name="name"
+                           value="{{ $user->name }}"
+                           placeholder="Masukkan Nama"
+                           autofocus>
+                    @error('name')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
 
-                <div class="form-group mt-2">
-                    <button type="submit" class="btn btn-primary">UPDATE</button>
+                <!-- Username -->
+                <div class="form-group mt-3">
+                    <label for="username" class="font-weight-bold">Username</label>
+                    <input class="form-control @error('username') is-invalid @enderror"
+                           type="text"
+                           name="username"
+                           value="{{ $user->email }}"
+                           placeholder="Masukkan Username">
+                    @error('username')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Password -->
+                <div class="form-group mt-3">
+                    <label for="password" class="font-weight-bold">Password</label>
+                    <input class="form-control @error('password') is-invalid @enderror"
+                           type="password"
+                           name="password"
+                           value="{{ old('password') }}"
+                           placeholder="Masukkan Password Baru">
+                    @error('password')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Tombol Submit -->
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary btn-block"
+                            style="background: linear-gradient(135deg, #2980b9, #21618c); border: none;">
+                        <i class="fas fa-save"></i> UPDATE
+                    </button>
                 </div>
             </form>
         </div>

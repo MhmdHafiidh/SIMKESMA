@@ -1,12 +1,14 @@
 @extends('layouts.sbadmin2')
 
 @section('content')
-    <div class="card">
-        <div class="card-header">Data Obat</div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3" style="background-color: #2980b9;">
+            <h6 class="m-0 font-weight-bold text-white">Data Obat</h6>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                <table class="table table-striped table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead style="background-color: #2980b9; color: white;">
                         <tr>
                             <th>Kode</th>
                             <th>Nama Obat</th>
@@ -23,29 +25,33 @@
                                 <td>{{ $item->nama_obat }}</td>
                                 <td>{{ $item->satuan }}</td>
                                 <td>
-                                    {{ $item->qty }}
-                                    @if ($item->qty <= 0)
-                                        <span class="badge bg-danger text-light">Habis</span>
-                                    @else
-                                        <span class="badge bg-primary text-light">Tersedia</span>
-                                    @endif
+                                    <span class="badge
+                                        {{ $item->qty <= 0 ? 'badge-danger' : 'badge-success' }}">
+                                        {{ $item->qty <= 0 ? 'Habis' : 'Tersedia' }}
                                     </span>
-                                </td>
-                                <td>{{ $item->tanggal_expired ? \Carbon\Carbon::parse($item->tanggal_expired)->format('d-m-Y') : '' }}
+                                    <strong>({{ $item->qty }})</strong>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-info">
-                                        Detail
+                                    {{ $item->tanggal_expired
+                                        ? \Carbon\Carbon::parse($item->tanggal_expired)->format('d-m-Y')
+                                        : 'Tidak ada' }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('obat.show', $item->id) }}" class="btn btn-info btn-sm">
+                                        <i class="fas fa-eye"></i> Detail
                                     </a>
-                                    <a href="" class="btn btn-primary">
-                                        Edit
+                                    <a href="{{ route('obat.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    {{-- <form action="/dokter/{{ $item->id }}" method="POST" class="d-inline"
-                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                        @method('DELETE')
+                                    <form action="{{ route('obat.destroy', $item->id) }}" method="POST"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </form> --}}
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt"></i> Hapus
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
