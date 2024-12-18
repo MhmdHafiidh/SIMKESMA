@@ -83,6 +83,26 @@
                 </li>
             @endif
 
+            @if (auth()->user()->role == 'dokter')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dokter.panduan.index') }}">
+                        <i class="fas fa-book-medical"></i>
+                        <span>Kelola Panduan</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (auth()->user()->role == 'mahasiswa')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mahasiswa.panduan.index') }}">
+                        <i class="fas fa-book-medical"></i>
+                        <span>Lihat Panduan</span>
+                    </a>
+                </li>
+            @endif
+
+
+
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler -->
             <div class="text-center d-none d-md-inline">
