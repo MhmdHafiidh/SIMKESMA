@@ -10,6 +10,7 @@ use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PanduanController;
 
 
 /*
@@ -53,3 +54,20 @@ Auth::routes([
     //menghilangkan fungsi register di halaman login
     'register' => false
 ]);
+
+// Routes untuk Dokter
+Route::prefix('dokter')->middleware(['auth', 'role:dokter'])->group(function () {
+    Route::resource('panduan', PanduanController::class)->names([
+        'index' => 'dokter.panduan.index',
+        'create' => 'dokter.panduan.create',
+        'store' => 'dokter.panduan.store',
+        'edit' => 'dokter.panduan.edit',
+        'update' => 'dokter.panduan.update',
+        'destroy' => 'dokter.panduan.destroy',
+    ]);
+});
+
+// Routes untuk Mahasiswa
+Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->group(function () {
+    Route::get('panduan', [PanduanController::class, 'index'])->name('mahasiswa.panduan.index');
+});
