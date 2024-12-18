@@ -123,17 +123,10 @@
                                 </select>
                             </div>
 
-<<<<<<< HEAD
-                            {{-- Angkatan --}}
-                            <div class="form-group mb-4">
-                                <label>Angkatan</label>
-                                <select name="angkatan" class="form-control" required>
-=======
                             <div class="form-group mb-3">
                                 <label>Angkatan*</label>
                                 <select name="angkatan" id="angkatan"
                                     class="form-control @error('angkatan') is-invalid @enderror" required>
->>>>>>> a7eb19456e548b4ef043538b47b48c3705289a42
                                     <option value="">Pilih Angkatan</option>
                                     @foreach ($angkatan as $tahun)
                                         <option value="{{ $tahun }}"
@@ -142,13 +135,6 @@
                                     <option value="manual" {{ old('angkatan') == 'manual' ? 'selected' : '' }}>Lainnya
                                     </option>
                                 </select>
-<<<<<<< HEAD
-                            </div>
-
-                            {{-- Submit Button --}}
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-50 py-2">
-=======
 
                                 <input type="text" name="angkatan_manual" id="angkatan_manual"
                                     class="form-control mt-2 @error('angkatan_manual') is-invalid @enderror"
@@ -184,7 +170,6 @@
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">
->>>>>>> a7eb19456e548b4ef043538b47b48c3705289a42
                                     Daftar
                                 </button>
                             </div>
