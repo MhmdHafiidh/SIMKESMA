@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PanduanController;
+use App\Http\Controllers\ChatController;
 
 
 /*
@@ -40,6 +41,10 @@ Route::middleware(Authenticate::class)->group(function () {
     // Resource lainnya tetap menggunakan middleware yang ada
     Route::resource('user', UserController::class)->middleware(Admin::class);
     Route::resource('profil', ProfilController::class);
+    
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/messages/{id}', [ChatController::class, 'fetchMessages']);
+    Route::post('/chat/send', [ChatController::class, 'sendMessage']);
 });
 
 Route::get('/register', [MahasiswaController::class, 'create'])->name('register');
