@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Obat;
+use App\Http\Middleware\ManageObat;
 use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+        public function __construct()
+    {
+        $this->middleware('manage.obat');
+    }
+
     public function index()
     {
         $obat = Obat::all();
@@ -35,8 +38,6 @@ class ObatController extends Controller
             'nama_obat' => 'required',
             'satuan' => 'required',
             'tipe' => 'required',
-            'harga_beli' => 'required',
-            'harga_jual' => 'required',
             'qty' => 'required',
             'tanggal_expired' => 'required'
         ]);
@@ -46,8 +47,6 @@ class ObatController extends Controller
         $obat->nama_obat = $request->nama_obat;
         $obat->satuan = $request->satuan;
         $obat->tipe = $request->tipe;
-        $obat->harga_beli = $request->harga_beli;
-        $obat->harga_jual = $request->harga_jual;
         $obat->qty = $request->qty;
         $obat->tanggal_expired = $request->tanggal_expired;
         $obat->save();

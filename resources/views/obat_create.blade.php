@@ -49,18 +49,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mt-1">
-                            <label for="harga_beli">Harga Beli</label>
-                            <input class="form-control" type="text" name="harga_beli" id="harga_beli"
-                                value="{{ old('harga_beli') }}">
-                            <span class="text-danger">{{ $errors->first('harga_beli') }}</span>
-                        </div>
-                        <div class="form-group mt-1">
-                            <label for="harga_jual">Harga Jual</label>
-                            <input class="form-control" type="text" name="harga_jual" id="harga_jual"
-                                value="{{ old('harga_jual') }}">
-                            <span class="text-danger">{{ $errors->first('harga_jual') }}</span>
-                        </div>
-                        <div class="form-group mt-1">
                             <label for="qty">QTY</label>
                             <input class="form-control" type="text" name="qty" value="{{ old('qty') }}"
                                 autofocus>
