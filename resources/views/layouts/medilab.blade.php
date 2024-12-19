@@ -175,13 +175,13 @@
                                     mempermudah pengelolaan data kesehatan mahasiswa polinema,
                                     meningkatkan efisiensi dalam pelayanan kesehatan, serta memberikan akses informasi
                                     yang cepat dan akurat kepada mahasiswa.
-                                <h3>What is SIMKESMA?</h3>
+                                {{-- <h3>What is SIMKESMA?</h3>
                                 <p>
                                     Sistem Informasi Kesehatan Mahasiswa POLINEMA merupakan sistem yang dibuat untuk
                                     mempermudah pengelolaan data kesehatan mahasiswa polinema,
                                     meningkatkan efisiensi dalam pelayanan kesehatan, serta memberikan akses informasi
                                     yang cepat dan akurat kepada mahasiswa.
-                                </p>
+                                </p> --}}
                                 <div class="text-center">
                                     <a href="#" class="more-btn">Pelajari Lebih Lanjut<i
                                             class="bx bx-chevron-right"></i></a>
