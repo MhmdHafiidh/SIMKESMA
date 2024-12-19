@@ -40,13 +40,8 @@
                                     <a href="{{ route('obat.show', $item->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Detail
                                     </a>
-                                    <a href="{{ route('obat.edit', $item->id) }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </a>
-                                    <form action="{{ route('obat.destroy', $item->id) }}" method="POST"
-                                          class="d-inline"
-                                          onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                        @csrf
+                                    {{-- <form action="/dokter/{{ $item->id }}" method="POST" class="d-inline"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="fas fa-trash-alt"></i> Hapus
