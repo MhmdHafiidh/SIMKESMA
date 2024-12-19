@@ -197,14 +197,50 @@
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('sbadmin2/img/undraw_profile.svg') }}">
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                <!-- Trigger Modal Logout -->
+                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#"
+                                   data-toggle="modal" data-target="#logoutModal" style="transition: all 0.3s ease;">
+                                    <span class="d-flex align-items-center">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
+                                        <span class="text-danger font-weight-bold">Logout</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-muted"></i>
                                 </a>
                             </div>
+
+
+                            <!-- Modal Logout -->
+                            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header bg-gradient-primary text-white">
+                                            <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+                                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal Body -->
+                                        <div class="modal-body text-center">
+                                            <i class="fas fa-exclamation-circle fa-3x text-warning mb-3"></i>
+                                            <p>Apakah Anda yakin ingin keluar dari aplikasi?</p>
+                                        </div>
+                                        <!-- Modal Footer -->
+                                        <div class="modal-footer justify-content-center">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                <i class="fas fa-times"></i> Batal
+                                            </button>
+                                            <a class="btn btn-danger" href="/logout">
+                                                <i class="fas fa-sign-out-alt"></i> Keluar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </li>
                     </ul>
                 </nav>
