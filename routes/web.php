@@ -10,6 +10,9 @@ use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PanduanController;
+use App\Http\Controllers\ChatController;
+
 
 
 /*
@@ -39,6 +42,14 @@ Route::middleware(Authenticate::class)->group(function () {
     // Resource lainnya tetap menggunakan middleware yang ada
     Route::resource('user', UserController::class)->middleware(Admin::class);
     Route::resource('profil', ProfilController::class);
+
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/messages/{id}', [ChatController::class, 'fetchMessages']);
+    Route::post('/chat/send', [ChatController::class, 'sendMessage']);
+    Route::post('/chat/mark-as-read', [ChatController::class, 'markAsRead']);
+    Route::get('/chat/check-unread', [ChatController::class, 'checkUnreadMessages']);
+
+
 });
 
 Route::get('/register', [MahasiswaController::class, 'create'])->name('register');
@@ -57,3 +68,20 @@ Auth::routes([
     //menghilangkan fungsi register di halaman login
     'register' => false
 ]);
+
+// Routes untuk Dokter
+Route::prefix('dokter')->middleware(['auth', 'role:dokter'])->group(function () {
+    Route::resource('panduan', PanduanController::class)->names([
+        'index' => 'dokter.panduan.index',
+        'create' => 'dokter.panduan.create',
+        'store' => 'dokter.panduan.store',
+        'edit' => 'dokter.panduan.edit',
+        'update' => 'dokter.panduan.update',
+        'destroy' => 'dokter.panduan.destroy',
+    ]);
+});
+
+// Routes untuk Mahasiswa
+Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->group(function () {
+    Route::get('panduan', [PanduanController::class, 'index'])->name('mahasiswa.panduan.index');
+});

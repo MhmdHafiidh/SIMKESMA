@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -139,6 +142,36 @@
                     </div>
                 </li>
             @endif
+
+            @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin' )
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('chat.index') }}">
+                    <i class="fas fa-comments"></i>
+                    <span>Chat</span>
+                </a>
+            </li>
+        @endif
+
+            @if (auth()->user()->role == 'dokter')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dokter.panduan.index') }}">
+                        <i class="fas fa-book-medical"></i>
+                        <span>Kelola Panduan</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (auth()->user()->role == 'mahasiswa')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mahasiswa.panduan.index') }}">
+                        <i class="fas fa-book-medical"></i>
+                        <span>Lihat Panduan</span>
+                    </a>
+                </li>
+            @endif
+
+
+
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler -->
             <div class="text-center d-none d-md-inline">
