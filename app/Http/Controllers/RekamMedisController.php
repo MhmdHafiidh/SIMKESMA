@@ -20,6 +20,7 @@ class RekamMedisController extends Controller
             'gejala' => 'required|string',
             'riwayat_penyakit' => 'nullable|string',
             'alergi' => 'nullable|string',
+            'tanggal_periksa' => 'required|date',
             'tekanan_darah' => 'nullable|string',
             'suhu_badan' => 'nullable|integer',
             'tinggi_badan' => 'nullable|integer',
@@ -32,6 +33,7 @@ class RekamMedisController extends Controller
             'gejala' => $validated['gejala'],
             'riwayat_penyakit' => $validated['riwayat_penyakit'],
             'alergi' => $validated['alergi'],
+            'tanggal_periksa' => $request->tanggal_periksa,
             'tekanan_darah' => $validated['tekanan_darah'],
             'suhu_badan' => $validated['suhu_badan'],
             'tinggi_badan' => $validated['tinggi_badan'],
@@ -45,7 +47,7 @@ class RekamMedisController extends Controller
     // Mahasiswa views their rekam medis
     public function indexMahasiswa()
     {
-        $rekamMedis = RekamMedis::where('mahasiswa_id', auth()->id())->get();
+        $rekamMedis = RekamMedis::with('mahasiswa')->where('mahasiswa_id', auth()->id())->get();
         return view('rekam_medis.index_mahasiswa', compact('rekamMedis'));
     }
 
@@ -81,4 +83,18 @@ class RekamMedisController extends Controller
 
         return redirect()->route('rekam_medis.index_dokter')->with('success', 'Diagnosis dan tindakan berhasil disimpan.');
     }
+    public function destroy($id)
+    {
+        // Cari data berdasarkan ID
+        $rekamMedis = RekamMedis::findOrFail($id);
+
+        // Hapus data
+        $rekamMedis->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('rekam_medis.index_mahasiswa')
+            ->with('success', 'Rekam medis berhasil dihapus.');
+    }
+
+    
 }

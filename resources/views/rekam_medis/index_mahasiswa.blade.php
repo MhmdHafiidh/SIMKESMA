@@ -11,23 +11,33 @@
                     <thead style="background-color: #2980b9; color: white;">
                         <tr>
                             <th>ID</th>
+                            <th>Nama</th>
                             <th>Keluhan</th>
                             <th>Status</th>
                             <th>Tanggal Periksa</th>
-                            <th>Detail</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($rekamMedis as $rekam)
                             <tr>
                                 <td>{{ $rekam->id }}</td>
+                                <td>{{ $rekam->mahasiswa->name }}</td>
                                 <td>{{ $rekam->keluhan }}</td>
                                 <td>{{ $rekam->status }}</td>
-                                <td>{{ $rekam->tanggal_periksa ?? 'Belum diperiksa' }}</td>
-                                <td>
-                                    <a href="{{ route('rekam_medis.show', $rekam->id) }}" class="btn btn-info btn-sm">
+                                <td>{{ \Carbon\Carbon::parse($rekam->tanggal_periksa)->format('d/m/Y') }}</td>
+                                <td class="d-flex justify-content-start">
+                                    <a href="{{ route('rekam_medis.show', $rekam->id) }}" class="btn btn-info btn-sm mr-2">
                                         <i class="fas fa-eye"></i> Lihat
                                     </a>
+                                    <form action="{{ route('rekam_medis.destroy', $rekam->id) }}" method="POST"
+                                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

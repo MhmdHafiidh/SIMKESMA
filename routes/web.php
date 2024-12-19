@@ -103,7 +103,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/rekam-medis/dokter', [RekamMedisController::class, 'indexDokter'])->name('rekam_medis.index_dokter');
     Route::get('/rekam-medis/{id}', [RekamMedisController::class, 'show'])->name('rekam_medis.show');
     Route::post('/rekam-medis/{id}/diagnosis', [RekamMedisController::class, 'updateDiagnosis'])->name('rekam_medis.update_diagnosis');
+    Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy'])->name('rekam_medis.destroy');
+
 });
+
+
 
 
 

@@ -10,6 +10,10 @@
                 <!-- Add a box (kota) around the content -->
                 <div class="border p-4 rounded">
                     <div class="mb-2">
+                        <h6><strong>Nama:</strong></h6>
+                        <p class="small text-dark">{{ $rekamMedis->mahasiswa->name }}</p>
+                    </div>
+                    <div class="mb-2">
                         <h6><strong>Keluhan:</strong></h6>
                         <p class="small text-dark">{{ $rekamMedis->keluhan }}</p>
                     </div>
