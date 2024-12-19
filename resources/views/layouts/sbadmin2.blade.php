@@ -107,12 +107,11 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse"
                         data-target="#collapseDataKlinik" aria-expanded="true" aria-controls="collapseDataKlinik">
-                        <i class="fas fa-clinic-medical"></i>
-                        <span class="d-none d-md-inline">Data Klinik</span>
+                        <i class="fas fa-pills"></i>
+                        <span class="d-none d-md-inline">Obat</span>
                     </a>
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/obat/create">Tambah Obat</a>
                             <a class="collapse-item" href="/obat">Data Obat</a>
                         </div>
                     </div>
@@ -123,15 +122,23 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse"
                         data-target="#collapseDataKlinik" aria-expanded="true" aria-controls="collapseDataKlinik">
-                        <i class="fas fa-clinic-medical"></i>
-                        <span class="d-none d-md-inline">Data Klinik</span>
+                        <i class="fas fa-pills"></i>
+                        <span class="d-none d-md-inline">Obat</span>
                     </a>
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/obat">Data Obat</a>
-                            <a class="collapse-item" href="/mahasiswa">Data Mahasiswa</a>
+                            <a class="collapse-item" href="/obat/create">Tambah Obat</a>
                         </div>
                     </div>
+                </li>
+            @endif
+            @if (auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mahasiswa.index') }}">
+                        <i class="fas fa-user"></i>
+                        <span class="d-none d-md-inline">Data Mahasiswa</span>
+                    </a>
                 </li>
             @endif
             @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin')
@@ -192,10 +199,6 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/profil/create">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
