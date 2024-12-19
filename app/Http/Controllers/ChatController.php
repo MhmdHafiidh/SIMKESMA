@@ -12,8 +12,12 @@ class ChatController extends Controller
 {
     public function index()
     {
-        // Fetch users of different roles for chat
-        $users = User::where('id', '!=', auth()->id())->get();
+        $currentUser = auth()->user(); // Mendapatkan pengguna yang sedang login
+
+        // Filter pengguna lain dengan role yang berbeda
+        $users = User::where('id', '!=', $currentUser->id) // Hindari menampilkan pengguna yang sama
+                ->where('role', '!=', $currentUser->role) // Filter berdasarkan role
+                ->get();
         return view('chat.index', compact('users'));
     }
 
