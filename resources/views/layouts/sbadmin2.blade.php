@@ -3,7 +3,7 @@
 
 <head>
     <!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -101,18 +101,6 @@
                     <span class="d-none d-md-inline">Dashboard</span>
                 </a>
             </li>
-            <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Route::is('profil.*') ? 'active' : '' }}">
-                <a class="nav-link" href="/profil/create">
-                    <i class="fas fa-cogs"></i>
-                    <span class="d-none d-md-inline">Profile</span>
-                </a>
-            </li>
-<<<<<<< HEAD
-
-=======
-            <!-- Collapsible Sections for Admin -->
->>>>>>> 7456444e9ba14e15f2058c11669273fef0c0dd25
             @if (auth()->user()->role == 'dokter')
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">Data Master</div>
@@ -146,16 +134,14 @@
                     </div>
                 </li>
             @endif
-<<<<<<< HEAD
-
-            @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin' )
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('chat.index') }}">
-                    <i class="fas fa-comments"></i>
-                    <span>Chat</span>
-                </a>
-            </li>
-        @endif
+            @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('chat.index') }}">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat</span>
+                    </a>
+                </li>
+            @endif
 
             @if (auth()->user()->role == 'dokter')
                 <li class="nav-item">
@@ -175,10 +161,6 @@
                 </li>
             @endif
 
-
-
-=======
->>>>>>> 7456444e9ba14e15f2058c11669273fef0c0dd25
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler -->
             <div class="text-center d-none d-md-inline">
