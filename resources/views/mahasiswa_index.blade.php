@@ -7,6 +7,12 @@
             background-color: #2980b9;
             color: #ffffff;
         }
+
+         /* Tambahkan gradasi ke card-header */
+         .card-header {
+            background: linear-gradient(90deg, #2980b9, #41729f);
+            color: #ffffff;
+        }
     </style>
 
     <div class="card">
