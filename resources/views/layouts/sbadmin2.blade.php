@@ -21,6 +21,66 @@
     <link href="{{ asset('sbadmin2') }}/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/medilab/assets/img/simm.png" rel="icon" type="image/png">
+    <style>
+        .bg-gradient-primary {
+            background-color: #2980b9 !important;
+            background-image: none !important;
+        }
+
+        .sidebar-dark .navbar-nav .nav-item .nav-link {
+            color: white;
+        }
+
+        .sidebar-dark .navbar-nav .nav-item.active .nav-link {
+            color: #ffffff !important;
+            background-color: #21618c !important;
+        }
+
+        .btn-primary {
+            background-color: #2980b9 !important;
+            border-color: #2980b9 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #21618c !important;
+            border-color: #21618c !important;
+        }
+
+        .topbar {
+            background-color: #2980b9 !important;
+        }
+
+        .topbar .nav-link {
+            color: white !important;
+        }
+
+        .topbar .dropdown-menu {
+            border-color: #2980b9 !important;
+        }
+
+        footer.bg-white {
+            background-color: #f8f9fc;
+        }
+
+        footer span {
+            color: #2980b9;
+        }
+
+        .topbar .text-gray-600 {
+            color: white !important;
+        }
+
+        .bg-gradient-primary {
+            background-color: #2980b9 !important;
+            background-image: linear-gradient(135deg, #2980b9, #21618c) !important;
+        }
+
+        .sidebar-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 5px;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -30,11 +90,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <img src="{{ asset('medilab/assets/img/logoo.png') }}" alt="Logo Simkesma" class="sidebar-logo">
                 <div class="sidebar-brand-text mx-1">SIMKESMA</div>
             </a>
-
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ Route::is('home*') ? 'active' : '' }}">
                 <a class="nav-link" href="/home">
@@ -42,7 +101,6 @@
                     <span class="d-none d-md-inline">Dashboard</span>
                 </a>
             </li>
-
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Route::is('profil.*') ? 'active' : '' }}">
                 <a class="nav-link" href="/profil/create">
@@ -50,7 +108,11 @@
                     <span class="d-none d-md-inline">Profile</span>
                 </a>
             </li>
+<<<<<<< HEAD
 
+=======
+            <!-- Collapsible Sections for Admin -->
+>>>>>>> 7456444e9ba14e15f2058c11669273fef0c0dd25
             @if (auth()->user()->role == 'dokter')
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">Data Master</div>
@@ -68,7 +130,6 @@
                     </div>
                 </li>
             @endif
-
             @if (auth()->user()->role == 'admin')
                 <hr class="sidebar-divider">
                 <li class="nav-item">
@@ -85,6 +146,7 @@
                     </div>
                 </li>
             @endif
+<<<<<<< HEAD
 
             @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin' )
             <li class="nav-item">
@@ -115,6 +177,8 @@
 
 
 
+=======
+>>>>>>> 7456444e9ba14e15f2058c11669273fef0c0dd25
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler -->
             <div class="text-center d-none d-md-inline">
@@ -128,12 +192,10 @@
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <!-- Sidebar Toggle (Topbar) -->
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -176,7 +238,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; {{ env('APP_NAME') }} 2024</span>
+                        <span>Copyright &copy; SIMKESMA KELOMPOK 4</span>
                     </div>
                 </div>
             </footer>
