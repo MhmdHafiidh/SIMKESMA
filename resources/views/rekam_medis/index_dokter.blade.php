@@ -16,6 +16,8 @@
                             <th style="padding: 1.2rem;">Keluhan</th>
                             <th style="padding: 1.2rem;">Status</th>
                             <th style="padding: 1.2rem;">Tanggal Periksa</th>
+                            <th style="padding: 1.2rem;">Diagnosis</th>
+                            <th style="padding: 1.2rem;">Tindakan</th>
                             <th style="padding: 1.2rem;">Aksi</th>
                         </tr>
                     </thead>
@@ -28,6 +30,12 @@
                                 <td style="padding: 1.2rem;">{{ $rekam->status }}</td>
                                 <td style="padding: 1.2rem;">
                                     {{ \Carbon\Carbon::parse($rekam->tanggal_periksa)->format('d/m/Y') }}</>
+                                </td>
+                                <td style="padding: 1.2rem;">
+                                    {{ $rekam->diagnosis ?? 'Belum ada diagnosis' }}
+                                </td>
+                                <td style="padding: 1.2rem;">
+                                    {{ $rekam->tindakan ?? 'Belum ada tindakan' }}
                                 </td>
                                 <td style="padding: 1.2rem;">
                                     <a href="{{ route('rekam_medis.show', $rekam->id) }}"

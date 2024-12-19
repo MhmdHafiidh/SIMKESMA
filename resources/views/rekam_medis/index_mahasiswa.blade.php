@@ -15,6 +15,8 @@
                             <th>Keluhan</th>
                             <th>Status</th>
                             <th>Tanggal Periksa</th>
+                            <th>Diagnosis</th>
+                            <th>Tindakan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -26,6 +28,8 @@
                                 <td>{{ $rekam->keluhan }}</td>
                                 <td>{{ $rekam->status }}</td>
                                 <td>{{ \Carbon\Carbon::parse($rekam->tanggal_periksa)->format('d/m/Y') }}</td>
+                                <td>{{ $rekam->diagnosis ?? 'Belum ada diagnosis' }}</td>
+                                <td>{{ $rekam->tindakan ?? 'Belum ada tindakan' }}</td>
                                 <td class="d-flex justify-content-start">
                                     <a href="{{ route('rekam_medis.show', $rekam->id) }}" class="btn btn-info btn-sm mr-2">
                                         <i class="fas fa-eye"></i> Lihat
