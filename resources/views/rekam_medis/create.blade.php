@@ -1,42 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.sbadmin2')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isi Rekam Medis</title>
-</head>
+@section('content')
+    <div class="card shadow mb-4">
+        <div class="card-header py-3" style="background-color: #2980b9;">
+            <h6 class="m-0 font-weight-bold text-white">Form Rekam Medis</h6>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('rekam_medis.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="keluhan" class="font-weight-bold">Keluhan</label>
+                            <input class="form-control" name="keluhan" id="keluhan" placeholder="Masukkan keluhan pasien" required>
+                        </div>
 
-<body>
-    <h1>Form Rekam Medis</h1>
-    <form action="{{ route('rekam_medis.store') }}" method="POST">
-        @csrf
-        <label for="keluhan">Keluhan:</label>
-        <textarea name="keluhan" id="keluhan" required></textarea><br>
+                        <div class="form-group">
+                            <label for="gejala" class="font-weight-bold">Gejala</label>
+                            <input class="form-control" name="gejala" id="gejala" placeholder="Masukkan gejala yang dialami" required>
+                        </div>
 
-        <label for="gejala">Gejala:</label>
-        <textarea name="gejala" id="gejala" required></textarea><br>
+                        <div class="form-group">
+                            <label for="riwayat_penyakit" class="font-weight-bold">Riwayat Penyakit</label>
+                            <input class="form-control" name="riwayat_penyakit" id="riwayat_penyakit" placeholder="Masukkan riwayat penyakit sebelumnya">
+                        </div>
 
-        <label for="riwayat_penyakit">Riwayat Penyakit:</label>
-        <textarea name="riwayat_penyakit" id="riwayat_penyakit"></textarea><br>
+                        <div class="form-group">
+                            <label for="alergi" class="font-weight-bold">Alergi</label>
+                            <input type="text" class="form-control" name="alergi" id="alergi" placeholder="Masukkan alergi (jika ada)">
+                        </div>
+                    </div>
 
-        <label for="alergi">Alergi:</label>
-        <input type="text" name="alergi" id="alergi"><br>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tekanan_darah" class="font-weight-bold">Tekanan Darah</label>
+                            <input type="text" class="form-control" name="tekanan_darah" id="tekanan_darah" placeholder="Masukkan tekanan darah">
+                        </div>
 
-        <label for="tekanan_darah">Tekanan Darah:</label>
-        <input type="text" name="tekanan_darah" id="tekanan_darah"><br>
+                        <div class="form-group">
+                            <label for="suhu_badan" class="font-weight-bold">Suhu Badan</label>
+                            <input type="number" class="form-control" name="suhu_badan" id="suhu_badan" step="0.1" placeholder="Masukkan suhu badan">
+                        </div>
 
-        <label for="suhu_badan">Suhu Badan:</label>
-        <input type="number" name="suhu_badan" id="suhu_badan" step="0.1"><br>
+                        <div class="form-group">
+                            <label for="tinggi_badan" class="font-weight-bold">Tinggi Badan</label>
+                            <input type="number" class="form-control" name="tinggi_badan" id="tinggi_badan" placeholder="Masukkan tinggi badan">
+                        </div>
 
-        <label for="tinggi_badan">Tinggi Badan:</label>
-        <input type="number" name="tinggi_badan" id="tinggi_badan"><br>
-
-        <label for="berat_badan">Berat Badan:</label>
-        <input type="number" name="berat_badan" id="berat_badan" step="0.1"><br>
-
-        <button type="submit">Kirim</button>
-    </form>
-</body>
-
-</html>
+                        <div class="form-group">
+                            <label for="berat_badan" class="font-weight-bold">Berat Badan</label>
+                            <input type="number" class="form-control" name="berat_badan" id="berat_badan" step="0.1" placeholder="Masukkan berat badan">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg mt-3">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection

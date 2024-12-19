@@ -44,7 +44,7 @@
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal{{ $item->id }}">
                                         <i class="fas fa-edit"></i> Update
                                     </button>
-                                    <form action="{{ route('obat.destroy', $item->id) }}" method="POST" 
+                                    <form action="{{ route('obat.destroy', $item->id) }}" method="POST"
                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                         @csrf
                                         @method('DELETE')
@@ -107,7 +107,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_expired">Tanggal Expired</label>
-                                <input type="date" class="form-control" name="tanggal_expired" 
+                                <input type="date" class="form-control" name="tanggal_expired"
                                     value="{{ $item->tanggal_expired ? \Carbon\Carbon::parse($item->tanggal_expired)->format('Y-m-d') : '' }}" required>
                             </div>
                         </div>
@@ -120,32 +120,63 @@
             </div>
         </div>
     @endforeach
+
     {{-- Modal Detail --}}
-    @foreach ($obat as $item)
-        <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: #2980b9; color: white;">
-                        <h5 class="modal-title" id="detailModalLabel">Detail Obat - {{ $item->nama_obat }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p><strong>Kode Obat:</strong> {{ $item->kode_obat }}</p>
-                        <p><strong>Nama Obat:</strong> {{ $item->nama_obat }}</p>
-                        <p><strong>Satuan:</strong> {{ $item->satuan }}</p>
-                        <p><strong>Qty:</strong> {{ $item->qty }}</p>
-                        <p><strong>Tanggal Expired:</strong> 
+@foreach ($obat as $item)
+<div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            {{-- Modal Header --}}
+            <div class="modal-header text-white" style="background: linear-gradient(135deg, #2980b9, #21618c); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+                <h5 class="modal-title" id="detailModalLabel">
+                    <i class="fas fa-capsules"></i> Detail Obat - {{ $item->nama_obat }}
+                </h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {{-- Modal Body --}}
+            <div class="modal-body p-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong><i class="fas fa-barcode mr-2 text-primary"></i> Kode Obat:</strong>
+                        <span>{{ $item->kode_obat }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong><i class="fas fa-prescription-bottle-alt mr-2 text-success"></i> Nama Obat:</strong>
+                        <span>{{ $item->nama_obat }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong><i class="fas fa-ruler mr-2 text-warning"></i> Satuan:</strong>
+                        <span>{{ ucfirst($item->satuan) }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong><i class="fas fa-sort-numeric-up-alt mr-2 text-danger"></i> Qty:</strong>
+                        <span>{{ $item->qty }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong><i class="fas fa-calendar-alt mr-2 text-info"></i> Tanggal Expired:</strong>
+                        <span>
                             {{ $item->tanggal_expired ? \Carbon\Carbon::parse($item->tanggal_expired)->format('d-m-Y') : 'Tidak ada' }}
-                        </p>
-                        <p><strong>Tipe:</strong> {{ $item->tipe }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
+                        </span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong><i class="fas fa-tags mr-2 text-secondary"></i> Tipe:</strong>
+                        <span>{{ ucfirst($item->tipe) }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            {{-- Modal Footer --}}
+            <div class="modal-footer d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary btn-sm shadow-sm" data-dismiss="modal">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
             </div>
         </div>
-    @endforeach
+    </div>
+</div>
+@endforeach
+
 @endsection
