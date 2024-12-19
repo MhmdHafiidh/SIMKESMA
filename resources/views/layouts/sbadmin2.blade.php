@@ -150,6 +150,32 @@
                 </li>
             @endif
 
+            @if (auth()->user()->role == 'mahasiswa')
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                        data-target="#collapseRekamMedis" aria-expanded="true" aria-controls="collapseRekamMedis">
+                        <i class="fas fa-user"></i>
+                        <span class="d-none d-md-inline">Rekam Medis</span>
+                    </a>
+                    <div id="collapseRekamMedis" class="collapse">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('rekam_medis.index_mahasiswa') }}">Lihat Rekam
+                                Medis</a>
+                            <a class="collapse-item" href="{{ route('rekam_medis.create') }}">Tambah Rekam Medis</a>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
+            @if (auth()->user()->role == 'dokter')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('rekam_medis.index_dokter') }}">
+                        <i class="fas fa-user"></i>
+                        <span class="d-none d-md-inline">Rekam Medis</span>
+                    </a>
+                </li>
+            @endif
+
             @if (auth()->user()->role == 'dokter')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dokter.panduan.index') }}">
@@ -197,11 +223,13 @@
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('sbadmin2/img/undraw_profile.svg') }}">
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
                                 <!-- Trigger Modal Logout -->
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#"
-                                   data-toggle="modal" data-target="#logoutModal" style="transition: all 0.3s ease;">
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                    href="#" data-toggle="modal" data-target="#logoutModal"
+                                    style="transition: all 0.3s ease;">
                                     <span class="d-flex align-items-center">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
                                         <span class="text-danger font-weight-bold">Logout</span>
@@ -212,14 +240,15 @@
 
 
                             <!-- Modal Logout -->
-                            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                                aria-labelledby="logoutModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <!-- Modal Header -->
                                         <div class="modal-header bg-gradient-primary text-white">
                                             <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
-                                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close text-white" data-dismiss="modal"
+                                                aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
