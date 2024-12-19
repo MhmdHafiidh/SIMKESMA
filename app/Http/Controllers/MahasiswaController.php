@@ -89,4 +89,22 @@ class MahasiswaController extends Controller
 
         return back()->with('error', 'Email atau password salah.');
     }
+
+    public function destroy($id)
+{
+    try {
+        // Cari data mahasiswa berdasarkan ID
+        $mahasiswa = Mahasiswa::findOrFail($id);
+
+        // Hapus data mahasiswa
+        $mahasiswa->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil dihapus.');
+    } catch (\Exception $e) {
+        // Redirect dengan pesan error jika gagal
+        return redirect()->route('mahasiswa.index')->with('error', 'Gagal menghapus data: ' . $e->getMessage());
+    }
+}
+
 }

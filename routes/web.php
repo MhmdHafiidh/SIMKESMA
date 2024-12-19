@@ -32,16 +32,18 @@ Route::resource('registrasipasien', RegistrasiPasienController::class);
 Route::post('/login/mahasiswa', [LoginController::class, 'mahasiswaLogin'])->name('login.mahasiswa.submit');
 Route::get('/dashboard/mahasiswa', [LoginController::class, 'dashboardMahasiswa'])->name('mahasiswa.dashboard')->middleware('auth');
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
+Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
+
 
 Route::post('/login/dokter', [LoginController::class, 'dokterLogin'])->name('login.dokter.submit');
 Route::get('/dashboard/dokter', [LoginController::class, 'dashboardDokter'])->name('dokter.dashboard')->middleware('auth');
+
 
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('obat', ObatController::class)->middleware('manage.obat');
     // Resource lainnya tetap menggunakan middleware yang ada
     Route::resource('user', UserController::class)->middleware(Admin::class);
-    Route::resource('profil', ProfilController::class);
 
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/messages/{id}', [ChatController::class, 'fetchMessages']);
