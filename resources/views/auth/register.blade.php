@@ -123,21 +123,53 @@
                                 </select>
                             </div>
 
-                            {{-- Angkatan --}}
-                            <div class="form-group mb-4">
-                                <label>Angkatan</label>
-                                <select name="angkatan" class="form-control" required>
+                            <div class="form-group mb-3">
+                                <label>Angkatan*</label>
+                                <select name="angkatan" id="angkatan"
+                                    class="form-control @error('angkatan') is-invalid @enderror" required>
                                     <option value="">Pilih Angkatan</option>
                                     @foreach ($angkatan as $tahun)
                                         <option value="{{ $tahun }}"
                                             {{ old('angkatan') == $tahun ? 'selected' : '' }}>{{ $tahun }}</option>
                                     @endforeach
+                                    <option value="manual" {{ old('angkatan') == 'manual' ? 'selected' : '' }}>Lainnya
+                                    </option>
                                 </select>
+
+                                <input type="text" name="angkatan_manual" id="angkatan_manual"
+                                    class="form-control mt-2 @error('angkatan_manual') is-invalid @enderror"
+                                    placeholder="Masukkan Tahun" style="display: none;"
+                                    value="{{ old('angkatan_manual') }}">
+
+                                @error('angkatan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                @error('angkatan_manual')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
-                            {{-- Submit Button --}}
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-50 py-2">
+                            <script>
+                                // Menambahkan event listener untuk memilih "Lainnya (Isi Manual)"
+                                document.getElementById('angkatan').addEventListener('change', function() {
+                                    var angkatanSelect = this.value;
+                                    var angkatanManualInput = document.getElementById('angkatan_manual');
+
+                                    if (angkatanSelect == 'manual') {
+                                        angkatanManualInput.style.display = 'block'; // Menampilkan input manual
+                                    } else {
+                                        angkatanManualInput.style.display = 'none'; // Menyembunyikan input manual
+                                        angkatanManualInput.value = ''; // Mengosongkan input manual jika tidak dipilih
+                                    }
+                                });
+                            </script>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
                                     Daftar
                                 </button>
                             </div>

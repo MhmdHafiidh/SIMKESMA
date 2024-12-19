@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mahasiswa;
+use App\Models\Obat;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,37 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Jumlah mahasiswa
+        $jumlahMahasiswa = Mahasiswa::count();
+
+        // Data chart mahasiswa
+        $studentsByProdi = Mahasiswa::groupBy('prodi')->selectRaw('prodi, count(*) as jumlah_mahasiswa')->get();
+        $labels = [];
+        $data = [];
+        foreach ($studentsByProdi as $prodi) {
+            $labels[] = $prodi->prodi;
+            $data[] = $prodi->jumlah_mahasiswa;
+        }
+
+        $dataChart = [
+            'labels' => $labels,
+            'data' => $data,
+        ];
+
+        // Jumlah obat
+        $jumlahObat = Obat::count();
+
+        // Data chart obat
+        $obatData = Obat::select('nama_obat', 'qty')->get();
+        $obatLabels = $obatData->pluck('nama_obat')->toArray();
+        $obatQuantities = $obatData->pluck('qty')->toArray();
+
+        $dataObatChart = [
+            'labels' => $obatLabels,
+            'data' => $obatQuantities,
+        ];
+
+        // Return data to the view
+        return view('home', compact('studentsByProdi', 'dataChart', 'jumlahMahasiswa', 'jumlahObat', 'dataObatChart'));
     }
 }

@@ -37,9 +37,6 @@
                                     <a href="" class="btn btn-info">
                                         Detail
                                     </a>
-                                    <a href="" class="btn btn-primary">
-                                        Edit
-                                    </a>
                                     {{-- <form action="/dokter/{{ $item->id }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                         @method('DELETE')

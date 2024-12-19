@@ -9,10 +9,11 @@ class StoreMahasiswaRequests extends FormRequest
     public function rules()
     {
         return [
+
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|string|min:8|confirmed',
             'nama_lengkap' => 'required|string|max:255',
             'nim' => 'required|string|unique:mahas_table_v2,nim|max:20',
-            'email' => 'required|email|unique:mahas_table_v2,email|max:255',  // Validasi email
-            'password' => 'required|string|min:8|confirmed',  // Validasi password
             'tempat_lahir' => 'nullable|string|max:100',
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'nullable|in:L,P',
