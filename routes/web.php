@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\RegistrasiPasienController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
@@ -92,5 +92,18 @@ Route::prefix('dokter')->middleware(['auth', 'role:dokter'])->group(function () 
 Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->group(function () {
     Route::get('panduan', [PanduanController::class, 'index'])->name('mahasiswa.panduan.index');
 });
+
+Route::middleware('auth')->group(function () {
+    // Mahasiswa Routes
+    Route::get('/rekam-medis/create', [RekamMedisController::class, 'create'])->name('rekam_medis.create');
+    Route::post('/rekam-medis', [RekamMedisController::class, 'store'])->name('rekam_medis.store');
+    Route::get('/rekam-medis', [RekamMedisController::class, 'indexMahasiswa'])->name('rekam_medis.index_mahasiswa');
+    
+    // Dokter Routes
+    Route::get('/rekam-medis/dokter', [RekamMedisController::class, 'indexDokter'])->name('rekam_medis.index_dokter');
+    Route::get('/rekam-medis/{id}', [RekamMedisController::class, 'show'])->name('rekam_medis.show');
+    Route::post('/rekam-medis/{id}/diagnosis', [RekamMedisController::class, 'updateDiagnosis'])->name('rekam_medis.update_diagnosis');
+});
+
 
 
