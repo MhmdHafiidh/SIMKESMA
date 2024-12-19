@@ -133,17 +133,22 @@
                     </div>
                 </li>
             @endif
-<<<<<<<<< Temporary merge branch 1
-=========
-
-            @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin' )
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('chat.index') }}">
-                    <i class="fas fa-comments"></i>
-                    <span>Chat</span>
-                </a>
-            </li>
-        @endif
+            @if (auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mahasiswa.index') }}">
+                        <i class="fas fa-user"></i>
+                        <span class="d-none d-md-inline">Data Mahasiswa</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('chat.index') }}">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat</span>
+                    </a>
+                </li>
+            @endif
 
             @if (auth()->user()->role == 'dokter')
                 <li class="nav-item">
@@ -163,9 +168,6 @@
                 </li>
             @endif
 
-
-
->>>>>>>>> Temporary merge branch 2
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler -->
             <div class="text-center d-none d-md-inline">

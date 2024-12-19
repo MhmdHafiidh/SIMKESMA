@@ -650,7 +650,6 @@ class ComposerStaticInit0d6a51e2ca52d8f264209ab5b52a3a9d
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
 
         'App\\Http\\Controllers\\MahasiswaController' => __DIR__ . '/../..' . '/app/Http/Controllers/MahasiswaController.php',
-
         'App\\Http\\Controllers\\ObatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObatController.php',
         'App\\Http\\Controllers\\ProfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfilController.php',
         'App\\Http\\Controllers\\RegistrasiPasienController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrasiPasienController.php',

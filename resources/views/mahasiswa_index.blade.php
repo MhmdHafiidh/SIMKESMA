@@ -1,6 +1,14 @@
 @extends('layouts.sbadmin2')
 
 @section('content')
+    <style>
+        /* Tambahkan warna biru ke header tabel */
+        thead th {
+            background-color: #2980b9;
+            color: #ffffff;
+        }
+    </style>
+
     <div class="card">
         <div class="card-header">Data Mahasiswa</div>
         <div class="card-body">
