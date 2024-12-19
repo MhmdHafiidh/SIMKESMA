@@ -42,33 +42,114 @@
             </div>
         </div>
     </div>
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+    <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMKESMA</title>
+    <!-- Menambahkan CSS di sini -->
+    <style>
+        /* Navbar styles */
+        #navbar {
+            background-color: #fff; /* Background putih */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sedikit bayangan untuk efek */
+            border-radius: 10px; /* Menambahkan sedikit sudut melengkung */
+        }
 
-            <!-- Mengganti tulisan "SIMKESMA" dengan logo -->
-            <a href="index.html" class="logo me-auto">
-                <img src="/medilab/assets/img/logo_simkesma.png" alt="SIMKESMA Logo" class="logo-img">
-            </a>
+        .navbar-nav .nav-item .nav-link {
+            font-weight: 500;
+            color: #333; /* Warna teks gelap */
+            padding: 10px 20px;
+            transition: color 0.3s, background-color 0.3s;
+        }
 
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #fff; /* Warna teks putih pada hover */
+            background-color: #007bff; /* Warna latar belakang biru */
+            border-radius: 5px;
+        }
 
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="#faq">Tips</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Tentang</a></li>
-                     <li><a class="nav-link scrollto" href="/login">
-                            <li><a class="nav-link scrollto" href="/login">
-                                    <i class="bi bi-person-circle me-1"></i> Login</a>
-                            </li>
+        /* Navbar untuk tampilan mobile */
+        .navbar-toggler {
+            border-color: #007bff; /* Warna border tombol hamburger biru */
+        }
+    </style>
+</head>
+<body>
+    <!-- Konten halaman Anda, misalnya navbar di sini -->
+</body>
+</html>
+```html
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+        <!-- Logo -->
+        <a href="index.html" class="logo me-auto">
+            <img src="/medilab/assets/img/logo_simkesma.png" alt="SIMKESMA Logo" class="logo-img">
+        </a>
+        <!-- Navbar -->
+        <nav id="navbar" class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link scrollto active" href="#hero">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto" href="#faq">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto" href="#contact">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto" href="/login">
+                            <i class="bi bi-person-circle me-1"></i> Login
+                        </a>
+                    </li>
                 </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
+            </div>
+        </nav>
+    </div>
+</header><!-- End Header
+   <!-- ======= Header ======= -->
+{{-- <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-        </div>
-    </header><!-- End Header -->
+        <!-- Logo -->
+        <a href="index.html" class="logo me-auto">
+            <img src="/medilab/assets/img/logo_simkesma.png" alt="SIMKESMA Logo" class="logo-img">
+        </a> --}}
 
+        {{-- <!-- Navbar -->
+        <nav id="navbar" class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link scrollto active" href="#hero">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto" href="#faq">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto" href="#contact">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto" href="/login">
+                            <i class="bi bi-person-circle me-1"></i> Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav> --}}
 
+    </div>
+</header><!-- End Header -->
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
