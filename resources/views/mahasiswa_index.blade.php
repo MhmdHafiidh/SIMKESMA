@@ -31,22 +31,32 @@
                                 <td>{{ $mahasiswa->prodi }}</td>
                                 <td>{{ $mahasiswa->angkatan }}</td>
                                 <td>
-                                    <a href="" class="btn btn-info btn-sm">
-                                        Detail
-                                    </a>
-                                    <a href="" class="btn btn-primary btn-sm">
-                                        Edit
-                                    </a>
-                                    {{-- Uncomment dan sesuaikan form hapus jika diperlukan --}}
-                                    {{-- <form action="" method="POST" class="d-inline"
-                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                </form> --}}
+                                    <div class="d-flex" style="gap: 10px;">
+                                        <a href="{{ route('mahasiswa.edit', $mahasiswa->id) }}"
+                                            class="btn btn-primary btn-sm">Edit</a>
+                                        <form action="{{ route('mahasiswa.destroy', $mahasiswa->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const forms = document.querySelectorAll('form[onsubmit]');
+                                forms.forEach(form => {
+                                    form.addEventListener('submit', function(e) {
+                                        const confirmed = confirm('Apakah Anda yakin ingin menghapus data ini?');
+                                        if (!confirmed) {
+                                            e.preventDefault(); // Jika pengguna membatalkan, hentikan pengiriman form
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
                     </tbody>
                 </table>
             </div>

@@ -89,4 +89,65 @@ class MahasiswaController extends Controller
 
         return back()->with('error', 'Email atau password salah.');
     }
+
+    public function edit($id)
+{
+    // Cari mahasiswa berdasarkan ID
+    $mahasiswa = Mahasiswa::findOrFail($id);
+
+    // Daftar program studi (prodi) yang bisa dipilih
+    $prodi = [
+        'Teknik Informatika',
+        'Teknik Elektro',
+        'Teknik Mesin',
+        'Teknik Sipil',
+        'Sistem Informasi',
+        'Teknik Kimia'
+    ];
+
+    // Daftar angkatan (tahun)
+    $angkatan = range(date('Y'), date('Y') - 10);
+
+    // Return ke view edit
+    return view('mahasiswa_edit', compact('mahasiswa', 'prodi', 'angkatan'));
+}
+public function update(Request $request, $id)
+{
+    // Validasi input
+    $request->validate([
+        'nama_lengkap' => 'required|string|max:255',
+        'nim' => 'required|string|max:20',
+        'email' => 'required|email',
+        'tempat_lahir' => 'required|string|max:255',
+        'jenis_kelamin' => 'required|string|max:1',
+        'prodi' => 'required|string|max:255',
+        'angkatan' => 'required|integer|min:2000|max:' . date('Y'),
+    ]);
+
+    // Cari mahasiswa berdasarkan ID
+    $mahasiswa = Mahasiswa::findOrFail($id);
+
+    // Update data mahasiswa
+    $mahasiswa->update($request->all());
+
+    // Redirect kembali ke halaman index dengan pesan sukses
+    return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil diupdate!');
+}
+    public function destroy($id)
+{
+    try {
+        // Cari data mahasiswa berdasarkan ID
+        $mahasiswa = Mahasiswa::findOrFail($id);
+
+        // Hapus data mahasiswa
+        $mahasiswa->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil dihapus.');
+    } catch (\Exception $e) {
+        // Redirect dengan pesan error jika gagal
+        return redirect()->route('mahasiswa.index')->with('error', 'Gagal menghapus data: ' . $e->getMessage());
+    }
+}
+
 }

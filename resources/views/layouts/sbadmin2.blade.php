@@ -3,7 +3,7 @@
 
 <head>
     <!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -101,26 +101,17 @@
                     <span class="d-none d-md-inline">Dashboard</span>
                 </a>
             </li>
-            <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Route::is('profil.*') ? 'active' : '' }}">
-                <a class="nav-link" href="/profil/create">
-                    <i class="fas fa-cogs"></i>
-                    <span class="d-none d-md-inline">Profile</span>
-                </a>
-            </li>
-
             @if (auth()->user()->role == 'dokter')
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">Data Master</div>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse"
                         data-target="#collapseDataKlinik" aria-expanded="true" aria-controls="collapseDataKlinik">
-                        <i class="fas fa-clinic-medical"></i>
-                        <span class="d-none d-md-inline">Data Klinik</span>
+                        <i class="fas fa-pills"></i>
+                        <span class="d-none d-md-inline">Obat</span>
                     </a>
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/obat/create">Tambah Obat</a>
                             <a class="collapse-item" href="/obat">Data Obat</a>
                         </div>
                     </div>
@@ -131,17 +122,19 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse"
                         data-target="#collapseDataKlinik" aria-expanded="true" aria-controls="collapseDataKlinik">
-                        <i class="fas fa-clinic-medical"></i>
-                        <span class="d-none d-md-inline">Data Klinik</span>
+                        <i class="fas fa-pills"></i>
+                        <span class="d-none d-md-inline">Obat</span>
                     </a>
                     <div id="collapseDataKlinik" class="collapse">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/obat">Data Obat</a>
-                            <a class="collapse-item" href="/mahasiswa">Data Mahasiswa</a>
+                            <a class="collapse-item" href="/obat/create">Tambah Obat</a>
                         </div>
                     </div>
                 </li>
             @endif
+<<<<<<<<< Temporary merge branch 1
+=========
 
             @if (auth()->user()->role == 'mahasiswa' || auth()->user()->role == 'dokter' || auth()->user()->role == 'admin' )
             <li class="nav-item">
@@ -172,6 +165,7 @@
 
 
 
+>>>>>>>>> Temporary merge branch 2
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler -->
             <div class="text-center d-none d-md-inline">
@@ -203,10 +197,6 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/profil/create">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
