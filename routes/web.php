@@ -45,6 +45,8 @@ Route::get('/dashboard/dokter', [LoginController::class, 'dashboardDokter'])->na
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('obat', ObatController::class)->middleware('manage.obat');
+    Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.destroy');
+    Route::put('/obat/{id}', [ObatController::class, 'update'])->name('obat.update');
     // Resource lainnya tetap menggunakan middleware yang ada
     Route::resource('user', UserController::class)->middleware(Admin::class);
 
@@ -90,3 +92,5 @@ Route::prefix('dokter')->middleware(['auth', 'role:dokter'])->group(function () 
 Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->group(function () {
     Route::get('panduan', [PanduanController::class, 'index'])->name('mahasiswa.panduan.index');
 });
+
+
