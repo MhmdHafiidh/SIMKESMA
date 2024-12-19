@@ -7,7 +7,7 @@
         <div class="col-md-4 col-lg-3 mb-4">
             <div class="card user-card shadow-lg border-0">
                 <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center">
-                    <h6 class="m-0">Chats</h6>
+                    <h6 class="m-0">Chat</h6>
                     <i class="fas fa-comment-dots"></i>
                 </div>
                 <div class="list-group list-group-flush" id="users-list" style="max-height: 500px; overflow-y: auto;">
@@ -16,10 +16,10 @@
                        class="list-group-item list-group-item-action user-item py-3 d-flex align-items-center"
                        data-user-id="{{ $user->id }}"
                        onclick="selectUser({{ $user->id }}, '{{ $user->name }}')">
-                        <img src="https://via.placeholder.com/40" alt="avatar" class="rounded-circle mr-3">
+
                         <div class="flex-grow-1">
                             <h6 class="mb-1">{{ $user->name }}</h6>
-                            <small class="text-muted">Last seen just now</small>
+                            <small class="text-muted">Terakhir dilihat baru saja</small>
                         </div>
                         <span class="unread-badge badge badge-danger" data-user-id="{{ $user->id }}" style="display:none;">0</span>
                     </a>
@@ -32,7 +32,7 @@
         <div class="col-md-8 col-lg-9">
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center">
-                    <h6 id="chat-title">Select a user to start chatting</h6>
+                    <h6 id="chat-title">Pilih User untuk Memulai Chat</h6>
                     <div>
                         <button class="btn btn-light btn-sm" id="refresh-chat" onclick="refreshChat()" style="display:none;">
                             <i class="fas fa-sync"></i>
@@ -45,14 +45,14 @@
                 <div id="chat-box" class="chat-box p-4" style="height: 500px; overflow-y: auto;">
                     <div id="no-chat-selected" class="text-center text-muted">
                         <i class="fas fa-comments fa-4x mb-3"></i>
-                        <p>Select a user to view messages</p>
+                        <p>Pilih User untuk Melihat Pesan</p>
                     </div>
                 </div>
                 <div class="card-footer">
                     <form id="chat-form" enctype="multipart/form-data" class="d-flex align-items-center">
                         @csrf
                         <input type="hidden" id="receiver_id" name="receiver_id">
-                        <textarea class="form-control mr-2" id="message" placeholder="Write a message..." rows="1" disabled></textarea>
+                        <textarea class="form-control mr-2" id="message" placeholder="Tulis pesan..." rows="1" disabled></textarea>
                         <label class="btn btn-outline-secondary m-0">
                             <input type="file" id="image" name="image" accept="image/*" hidden disabled>
                             <i class="fas fa-image"></i>
