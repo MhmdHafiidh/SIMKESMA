@@ -73,16 +73,35 @@ class ObatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'kode_obat' => 'required|string',
+            'nama_obat' => 'required|string',
+            'satuan' => 'required|string',
+            'tipe' => 'required|string',
+            'qty' => 'required|integer|min:0',
+            'tanggal_expired' => 'required|date',
+        ]);
+
+        $obat = Obat::findOrFail($id);
+        $obat->update($validatedData);
+
+        return redirect()->route('obat.index')->with('success', 'Data obat berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Cari data obat berdasarkan ID
+        $obat = Obat::findOrFail($id);
+
+        // Hapus data obat
+        $obat->delete();
+
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('obat.index')->with('success', 'Data obat berhasil dihapus');
     }
 }
