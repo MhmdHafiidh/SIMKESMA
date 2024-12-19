@@ -32,7 +32,8 @@
                                 <td>{{ $mahasiswa->angkatan }}</td>
                                 <td>
                                     <div class="d-flex" style="gap: 10px;">
-                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{ route('mahasiswa.edit', $mahasiswa->id) }}"
+                                            class="btn btn-primary btn-sm">Edit</a>
                                         <form action="{{ route('mahasiswa.destroy', $mahasiswa->id) }}" method="POST"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             @method('DELETE')
