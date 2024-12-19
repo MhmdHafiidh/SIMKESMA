@@ -14,29 +14,29 @@ class DatabaseSeeder extends Seeder
     {
       if (!\App\Models\User::where('email', 'admin@admin.com')->exists()) {
         \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'role' => 'admin',
-            'password' => bcrypt('1'),
+            'name' => 'Tifur',
+            'email' => 'tifur@admin.com',
+            'role' => 'tifur123',
+            'password' => bcrypt('tifur123'),
         ]);
     }
 
     // Cek apakah email mahasiswa sudah ada
     if (!\App\Models\User::where('email', 'mahasiswa@example.com')->exists()) {
         \App\Models\User::factory()->create([
-            'name' => 'Mahasiswa',
-            'email' => 'mahasiswa@example.com',
+            'name' => 'Agung W',
+            'email' => 'agung@example.com',
             'role' => 'mahasiswa',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('agung123'),
         ]);
 }
 
     if (!\App\Models\User::where('email', 'dokter@example.com')->exists()) {
         \App\Models\User::factory()->create([
-            'name' => 'Dokter',
-            'email' => 'dokter@example.com',
+            'name' => 'Hafidh',
+            'email' => 'hafidh@example.com',
             'role' => 'dokter',
-            'password' => bcrypt('dokter123'),
+            'password' => bcrypt('hafidh123'),
         ]);
 }
 }
